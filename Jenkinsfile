@@ -1,8 +1,23 @@
-node{
-  stage('Git Checkout'){
-    git 'https://github.com/mag1309/spring-boot-hello-world/'
+pipeline {
+  agent any
+  tools {
+    maven 'maven' 
   }
-  stage('Compile-Package'){
-    sh 'mvn package'
+  triggers {
+    pollSCM '* * * * *'
+  }
+  stages {
+    stage ('Build') {
+      steps {
+        sh 'mvn clean package'
+      }
+    }
+    stage ('Deploy') {
+      steps {
+        script {
+          deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://16.16.212.204:8080/')], contextPath: '/hello1folder', onFailure: false, war: '**/*.war' 
+        }
+      }
+    }
   }
 }
