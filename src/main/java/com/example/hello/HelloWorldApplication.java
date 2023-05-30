@@ -13,6 +13,6 @@ public class HelloWorldApplication  extends SpringBootServletInitializer {
 	}
 	@Override
    	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        	return application.sources(FirstSpringBootApplication.class);
+        	return application.sources(HelloWorldApplication.class);
    }
 }
