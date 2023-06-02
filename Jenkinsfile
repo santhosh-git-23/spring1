@@ -15,7 +15,7 @@ pipeline {
     stage ('Deploy') {
       steps {
         script {
-          deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://13.53.130.27:8080/')], contextPath: '/spring1folder', onFailure: false, war: '**/*.war' 
+          deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://13.48.203.85:8080/')], contextPath: '/spring1folder', onFailure: false, war: '**/*.war' 
         }
       }
     }
